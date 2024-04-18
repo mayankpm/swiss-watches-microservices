@@ -25,6 +25,8 @@ SECRET_KEY = 'django-insecure-o$$(*!m-+z(3d(_f(5(723_(vec063#22fm08291uzdpgt8(ox
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+
 
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 
@@ -117,6 +119,12 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
+RABBITMQ_HOST = 'localhost'
+RABBITMQ_PORT = 5672
+RABBITMQ_USERNAME = 'your_username'
+RABBITMQ_PASSWORD = 'your_password'
+RABBITMQ_VHOST = '/'
 
 
 # Password validation
