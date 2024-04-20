@@ -10,11 +10,24 @@ channel = connection.channel()
 
 channel.queue_declare(queue='admin')
 
+import re
+
 def callback(ch, method, properties, body):
     print('Received in admin')
     print(body)
-    # Assuming the message format is "Product added to cart: <product_id>"
-    product_id = body.decode().split(": ")[1]
+    # Assuming the message format is "Product added to cart: (2, 'Rolex', 'Day-Date 36 Gold', Decimal('20000.00'))"
+    # Extract the part of the message after "Product added to cart: "
+    message_part = body.decode().split("Product added to cart: ")[1]
+    
+    # Use a regular expression to extract the tuple elements
+    match = re.match(r'\((.*?)\s*,\s*\'(.*?)\'\s*,\s*\'(.*?)\'\s*,\s*Decimal\(\'(.*?)\'\)\s*\)', message_part)
+    if match:
+        watch_id, brand, name, price = match.groups()
+        # Convert the price to a string
+        price = price.replace("'", "")
+        print(f"Watch ID: {watch_id}, Brand: {brand}, Name: {name}, Price: {price}")
+    else:
+        print("Failed to parse message")
     
     # Configure retries
     session = requests.Session()
@@ -23,7 +36,12 @@ def callback(ch, method, properties, body):
     session.mount('https://', HTTPAdapter(max_retries=retries))
     
     # Prepare the data to be sent
-    data = {'product_id': product_id}
+    data = {
+        'product_id': watch_id,
+        'brand': brand,
+        'name': name,
+        'price': price
+    }
     
     # Perform the POST request
     try:
