@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-!f8&c0np1pdt9tods5+lh#dp*@lada8_3ovf#l$va%@$lvd6os
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', '[::1]','.vercel.app']
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -89,7 +89,7 @@ DATABASES = {
         'NAME': 'product_management',
         'USER': 'root',
         'PASSWORD': 'helloworld',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '3306',
     }
 }

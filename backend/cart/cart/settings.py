@@ -25,10 +25,10 @@ SECRET_KEY = 'django-insecure-o$$(*!m-+z(3d(_f(5(723_(vec063#22fm08291uzdpgt8(ox
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', '[::1]','.vercel.app']
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -115,16 +115,11 @@ DATABASES = {
         'NAME': 'cart',
         'USER': 'root',
         'PASSWORD': 'helloworld',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '3306',
     }
 }
 
-RABBITMQ_HOST = 'localhost'
-RABBITMQ_PORT = 5672
-RABBITMQ_USERNAME = 'your_username'
-RABBITMQ_PASSWORD = 'your_password'
-RABBITMQ_VHOST = '/'
 
 
 # Password validation
@@ -169,20 +164,20 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'cart.middleware': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-}
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'level': 'DEBUG',
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'cart.middleware': {
+#             'handlers': ['console'],
+#             'level': 'DEBUG',
+#             'propagate': True,
+#         },
+#     },
+# }
