@@ -1,10 +1,13 @@
 # views.py
+from rest_framework.exceptions import NotFound
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Cart, Address
 from .serializer import CartSerializer, AddressSerializer
 from rest_framework import permissions, status
 from decimal import Decimal
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
 
 class CartList(APIView):
@@ -53,6 +56,27 @@ class CartList(APIView):
 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request):
+        Cart.objects.all().delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+@method_decorator(csrf_exempt, name='dispatch')
+class CartDetail(APIView):
+    authentication_classes = []  # Disable authentication for this view
+    permission_classes = []
+    def delete(self, request, product_id):
+        try:
+            cart_item = Cart.objects.filter(product_id=product_id).first()
+            if cart_item:
+                cart_item.delete()
+                return Response(status=status.HTTP_204_NO_CONTENT)
+            else:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+        except Cart.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+
 
 
 class AddressList(APIView):
@@ -67,3 +91,12 @@ class AddressList(APIView):
             serializer.save()
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
+
+# from django.middleware.csrf import get_token
+# from django.http import JsonResponse
+# from django.views import View
+
+# class GetCSRFTokenView(View):
+#     def get(self, request, *args, **kwargs):
+#         csrf_token = get_token(request)
+#         return JsonResponse({'csrf_token': csrf_token})

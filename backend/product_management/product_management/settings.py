@@ -136,3 +136,25 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ORIGIN = [
+    "http://localhost:5173", 
+    # "https://your-vercel-app.vercel.app",
+    # "https://swiss-watches-backend.vercel.app/",
+    # "https://swiss-watches-backend-kgrmzcmll-mayankpm.vercel.app/"
+]
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
+CORS_ALLOW_HEADERS = [
+    'Authorization',
+    'Content-Type',
+]
