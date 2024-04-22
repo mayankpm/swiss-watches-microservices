@@ -55,7 +55,8 @@ SIMPLE_JWT = {
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', '[::1]']
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -142,7 +143,7 @@ DATABASES = {
         'NAME': 'user_management',
         'USER': 'root',
         'PASSWORD': 'helloworld',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '3306',
     }
 }

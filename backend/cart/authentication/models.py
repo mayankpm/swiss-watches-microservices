@@ -5,7 +5,10 @@ class Cart(models.Model):
     quantity = models.IntegerField(default=1)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     user_id = models.IntegerField(default=1)
-    watch_id = models.IntegerField(default=2)
+    product_id = models.IntegerField(default=2) # Assuming this is the field for product ID
+    brand = models.CharField(max_length=100,default='Default Brand')
+    name = models.CharField(max_length=100, default='Default Name')
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     @property
     def item_total(self):
@@ -13,7 +16,6 @@ class Cart(models.Model):
 
     def __str__(self):
         return f"Cart item - Quantity: {self.quantity}, Total Price: {self.total_price}"
-
 
 
 class Address(models.Model):
