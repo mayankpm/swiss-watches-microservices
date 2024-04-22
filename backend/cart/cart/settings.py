@@ -114,7 +114,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cart',
         'USER': 'root',
-        'PASSWORD': 'helloworld',
+        'PASSWORD': 'root',
         'HOST': 'db',
         'PORT': '3306',
     }
