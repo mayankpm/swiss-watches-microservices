@@ -6,7 +6,7 @@ import Loginpage from './Components/Login/Loginpage'
 import SignupPage from './Components/Signup/SignupPage'
 import {BrowserRouter as Router,Route, Routes } from 'react-router-dom'
 import CartPage from './Components/Cart/CartPage'
-
+import Account from './Components/Account/Account'
 
 export default function App() {
 
@@ -21,6 +21,7 @@ export default function App() {
           <Route path='/login' element={<Loginpage backgroundColor="#f8fafc"/>}/>
           <Route path='/signup' element={<SignupPage backgroundColor="#f8fafc"/>}/>
           <Route path='/cart' element={<CartPage backgroundColor="#fff"/>}/>
+          <Route path='/account' element={<Account/>}/>
         </Routes>
       </Router>
     </>

@@ -81,8 +81,8 @@ export default function Navbar({navPosition,navTextStyle,navIcon,navBGColor,navC
     navigate('/cart');
   };
 
-  const navigateToHomePage = () => {
-    navigate('/homepage');
+  const navigateToUser = () => {
+    navigate('/account');
   }
 
   // Navigatet to home
@@ -162,6 +162,7 @@ export default function Navbar({navPosition,navTextStyle,navIcon,navBGColor,navC
       <a href="https://www.google.com">THE BRAND</a>
       <a className='collections-s' onClick={navigateToCollections}>COLLECTIONS</a>
       <a className='cart-s' onClick={navigateToCart}>CART</a>
+      <a className='user-s' onClick={navigateToUser}>ACCOUNT</a>
       <a className='login-s' onClick={navigateTologin}>LOGIN</a>
     </div>
   </div>

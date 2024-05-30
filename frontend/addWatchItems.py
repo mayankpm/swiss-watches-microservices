@@ -2,7 +2,7 @@ import json
 import requests
 
 def post_watch(watch):
-    url = "http://127.0.0.1:8000/auth/watches/"
+    url = "http://127.0.0.1:8001/auth/watches/"
     headers = {"Content-Type": "application/json"}
 
     response = requests.post(url, data=json.dumps(watch), headers=headers)

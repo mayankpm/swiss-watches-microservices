@@ -11,10 +11,6 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      timeout: 20s
-      retries: 10
 
   web:
     build: .
@@ -26,10 +22,10 @@ services:
     env_file:
       - .env
     depends_on:
-      db:
-        condition: service_healthy
+      - db
+
     environment:
-      - DATABASE_HOST=db
+      - DATABASE_HOST=localhost
 
 volumes:
   db_data:

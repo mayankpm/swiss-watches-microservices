@@ -27,10 +27,13 @@ export default function Search({isOpen,closeSearch}) {
     useEffect(() => {
         const fetchSearchResults = async () => {
             try {
-                const response = await fetch(import.meta.env.VITE_BACKEND_URL+`/auth/watches/?search=${query}`);
+                const response = await fetch(import.meta.env.VITE_PRODUCT_URL+`auth/watches/?search=${query}`);
                 if (response.ok) {
                     const data = await response.json();
-                    setSearchResults(data);
+                    console.log("Filtered data from backend:",data);
+                    const filteredData = data.filter(watch => watch.name.toLowerCase().includes(query.toLowerCase()));
+                    console.log("Client-side filtered data:", filteredData); // Debugging log
+                    setSearchResults(filteredData);
                 }
             } catch (error) {
                 console.error("Error fetching search results:", error);
