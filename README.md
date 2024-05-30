@@ -9,7 +9,7 @@ Follow these steps to build and run the Docker containers for the frontend and b
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/your-username/swiss-watches-backend.git
+   git clone https://github.com/mayankpm/swiss-watches-backend.git
    ```
 
 2. Navigate to frontend:
@@ -61,6 +61,3 @@ Follow these steps to build and run the Docker containers for the frontend and b
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
-Please replace `your-username` with your actual GitHub username in the clone command.
