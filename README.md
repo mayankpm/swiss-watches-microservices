@@ -12,6 +12,12 @@ Follow these steps to build and run the Docker containers for the frontend and b
    git clone https://github.com/your-username/swiss-watches-backend.git
    ```
 
+2. Navigate to frontend:
+
+   ```bash
+   cd frontend
+   ```
+
 2. Build the Docker image for the frontend:
 
    ```bash
@@ -27,7 +33,7 @@ Follow these steps to build and run the Docker containers for the frontend and b
 4. Navigate to the backend directory:
 
    ```bash
-   cd backend
+   cd ../backend
    ```
 
 5. For each app (user_management, product_management, cart), navigate to the respective directory and run the following commands:
